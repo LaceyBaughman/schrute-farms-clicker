@@ -1,8 +1,23 @@
 const shrute = {
-  level: 1,
-  produceCount: 3,
+  produceCount: 0,
+  bucks: 0,
 }
 
+let clickUpgrades = {
+  manure: {
+    price: 100,
+    quantity: 0,
+    multiplier: 1
+  }
+};
+
+let automaticUpgrades = {
+  cousinMose: {
+    price: 600,
+    quantity: 0,
+    multiplier: 20
+  }
+};
 
 function drawBeets() {
   let template = ''
@@ -15,44 +30,50 @@ function drawBeets() {
 function drawStats() {
   let template = ''
   template += `
-  <h1>${shrute.produceCount}</h1>
-            <p>
-            <h1>${shrute.level}</h1>
-            </p>
+  <div class="m-2 p-2 text-center">
+  <h1>Beets Harvested: ${shrute.produceCount}</h1>
+  <p>
+  <h1>Shrute Bucks: ${shrute.bucks}</h1>
+  </p>
+</div>
   `
+
   document.getElementById('stats').innerHTML = template
-  console.log('template', template)
 }
+
 
 function harvest() {
   shrute.produceCount++
-  if (shrute.produceCount < 10) {
-    shrute.level++
+  if (shrute.produceCount >= 100) {
+    shrute.bucks += 20
+    shrute.produce -= 100
   }
-  if (shrute.level > 3) {
 
-  }
-  console.log('harvsting', shrute.produceCount)
 
   drawStats()
 }
 
-//setInterval(shrute.produceCount++, 2000)
 
-// function updateLevel() {
-//   document.getElementById('stats').innerText = shrute.produceCount
-// }
 
-// function updateProduceCount() {
-//   document.getElementById('stats').innerText = shrute.produceCount
-// }
+function purchaseCompanion(companionName) {
+  let companion = automaticUpgrades.cousinMose
+
+  if (!companion) { return console.log('Does Not Exist') }
+  if (shrute.bucks < companion.cost) { return console.log('Not enough Shrute Bucks') }
+  if (companion.purchased) { return console.log('Already did that') }
+
+  companion.purchased = true
+  shrute.bucks -= companion.cost
+
+  drawStats()
+}
+
 
 function drawAll() {
   drawBeets()
   drawStats()
-  // updateProduceCount()
-  // updateLevel()
 }
+
 
 drawAll()
 

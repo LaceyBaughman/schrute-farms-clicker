@@ -23,7 +23,7 @@
 .side-bar {
   background-color: #2d4739ff;
   color: #9CAA88;
-  min-width: 200px;
+  min-height: vh;
 
 }
 
@@ -35,4 +35,12 @@ footer {
 
 img {
   max-width: 300px;
+}
+
+.reset-button {
+  background-color: #36413B;
+  border: #9CAA88;
+  color: #9CAA88;
+  text-align: center;
+  font-size: 16px; ;
 }
