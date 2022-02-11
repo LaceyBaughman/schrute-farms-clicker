@@ -2,3 +2,37 @@
 .title-font {
   font-family: 'Syne Tactile', cursive;
 }
+
+.main {
+  background-color: #9CAA88;
+  min-height: 80vh;
+}
+
+.plot-col {
+  margin-left: 3em;
+  text-align: center;
+  
+}
+
+.header {
+  background-color: #36413B;
+  color: #9CAA88;
+  min-height: 10vh;
+}
+
+.side-bar {
+  background-color: #2d4739ff;
+  color: #9CAA88;
+  min-width: 200px;
+
+}
+
+footer {
+  background-color: #36413B;
+  color: #9CAA88;
+  min-height: 10vh;
+}
+
+img {
+  max-width: 300px;
+}
