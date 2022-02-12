@@ -13,7 +13,7 @@ let clickUpgrades = {
 
 let automaticUpgrades = {
   cousinMose: {
-    price: 600,
+    price: 60,
     quantity: 0,
     multiplier: 20
   }
@@ -35,6 +35,8 @@ function drawStats() {
   <p>
   <h1>Shrute Bucks: ${shrute.bucks}</h1>
   </p>
+  <button onclick="purchaseUpgrade()"><h3>Apply Manure</h3></button><p>
+  <button onclick="purchaseCompanion()"><h3>Buy Cousin Mose for $60 Shrute Bucks</h3></button><p>
 </div>
   `
 
@@ -44,9 +46,9 @@ function drawStats() {
 
 function harvest() {
   shrute.produceCount++
-  if (shrute.produceCount >= 100) {
-    shrute.bucks += 20
-    shrute.produce -= 100
+  if (shrute.produceCount >= 10) {
+    shrute.produce -= 10
+    shrute.bucks += 50
   }
 
 
@@ -59,7 +61,7 @@ function purchaseCompanion(companionName) {
   let companion = automaticUpgrades.cousinMose
 
   if (!companion) { return console.log('Does Not Exist') }
-  if (shrute.bucks < companion.cost) { return console.log('Not enough Shrute Bucks') }
+  if (shrute.bucks < companion.price) { return console.log('Not enough Shrute Bucks') }
   if (companion.purchased) { return console.log('Already did that') }
 
   companion.purchased = true
@@ -68,11 +70,26 @@ function purchaseCompanion(companionName) {
   drawStats()
 }
 
+function purchaseUpgrade(Manure) {
+  let manure = clickUpgrades.manure
+
+  if (!manure) { return console.log('Does Not Exist') }
+  if (shrute.bucks < manure.price) { return console.log('Not enough Shrute Bucks') }
+  if (manure.purchased) { return console.log('Already did that') }
+
+  manure.purchased = true
+  shrute.bucks -= manure.cost
+
+  drawStats()
+}
 
 function drawAll() {
   drawBeets()
   drawStats()
 }
+
+
+//setInterval(collectAutoUpgrades, 3000);
 
 
 drawAll()
