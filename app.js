@@ -44,44 +44,60 @@ function drawStats() {
 }
 
 
+// function harvest() {
+//   shrute.produceCount++
+//   if (shrute.produceCount >= 10) {
+//     shrute.produce -= 10
+//     shrute.bucks += 50
+//   }
+
+
 function harvest() {
-  shrute.produceCount++
-  if (shrute.produceCount >= 10) {
-    shrute.produce -= 10
-    shrute.bucks += 50
-  }
+  shrute.bucks++
+  collectClickUpgrades()
+  // let mose = automaticUpgrades.cousinMose
+  // if (mose.purchased) {
 
-
+  // }
+  // let manure = clickUpgrades.manure
+  // if (manure.purchased) {
+  //   shrute.bucks += 4
+  // }
   drawStats()
 }
 
 
 
-function purchaseCompanion(companionName) {
-  let companion = automaticUpgrades.cousinMose
 
-  if (!companion) { return console.log('Does Not Exist') }
-  if (shrute.bucks < companion.price) { return console.log('Not enough Shrute Bucks') }
-  if (companion.purchased) { return console.log('Already did that') }
+function purchaseAutoUpgrade(Mose) {
+  let mose = automaticUpgrades.cousinMose
 
-  companion.purchased = true
-  shrute.bucks -= companion.cost
+  if (!mose) { return console.log('Does Not Exist') }
+  if (shrute.bucks < mose.price) { return console.log('Not enough Shrute Bucks') }
+  if (mose.purchased) { return console.log('Already did that') }
+
+  mose.purchased = true
+  shrute.bucks -= mose.cost
 
   drawStats()
 }
 
-function purchaseUpgrade(Manure) {
+function purchaseManureUpgrade() {
   let manure = clickUpgrades.manure
-
   if (!manure) { return console.log('Does Not Exist') }
   if (shrute.bucks < manure.price) { return console.log('Not enough Shrute Bucks') }
-  if (manure.purchased) { return console.log('Already did that') }
+  // if (manure.purchased) { return console.log('Already did that') }
 
-  manure.purchased = true
+  // manure.purchased = true
+
   shrute.bucks -= manure.cost
+  // increase quantity of manure
+  // increase cost of manure
 
   drawStats()
 }
+
+
 
 function drawAll() {
   drawBeets()
@@ -89,9 +105,12 @@ function drawAll() {
 }
 
 
-//setInterval(collectAutoUpgrades, 3000);
-
-
 drawAll()
+
+function collectClickUpgrades() {
+  // TODO itterate over clickUpgrades (for in)
+  //        shrute.bucks += upgrade.quantity * upgrade.multiplier
+}
+  //   setInterval(collectAutoUpgrades, 2000)
 
 
