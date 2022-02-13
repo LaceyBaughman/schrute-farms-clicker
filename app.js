@@ -2,24 +2,30 @@
 
 let clickUpgrades = {
   manure: {
-    cost: 20,
+    cost: 100,
     quantity: 0,
-    multiplier: 4,
+    multiplier: 30,
     purchased: false
   },
   water: {
     cost: 10,
     quantity: 0,
-    multiplier: 2,
+    multiplier: 5,
     purchased: false
   }
 };
 
 let autoUpgrades = {
   mose: {
-    cost: 15,
+    cost: 300,
     quantity: 0,
-    multiplier: 20,
+    multiplier: 50,
+    purchased: false,
+  },
+  dwight: {
+    cost: 1000,
+    quantity: 0,
+    multiplier: 100,
     purchased: false,
   }
 };
@@ -44,9 +50,12 @@ function harvest() {
 }
 
 function autoHarvest() {
-  if (autoUpgrades.mose.purchased = true) {
+  if (autoUpgrades.mose.purchased == true) {
     schruteBucks += autoUpgrades.mose.multiplier
   }
+  if (autoUpgrades.dwight.purchased == true)
+    schruteBucks += autoUpgrades.dwight.multiplier
+
   else {
     schruteBucks++
   }
@@ -62,7 +71,6 @@ function drawBeets() {
   <img class="plot-img selectable" onclick="harvest()" src="/assets/images/beet-plot.png">
   `
   document.getElementById('beetPlot').innerHTML = template
-  document.getElementById('beetPlot2').innerHTML = template
   console.log("drawBeets manure purchased", clickUpgrades.manure.purchased)
 }
 
@@ -70,26 +78,42 @@ function drawStats() {
   let template = ''
   template += `
 
-  <div class="col-md-3">
+  <div class="col-md-4 p-2">
   <p>
   <h1>Schrute Bucks: ${schruteBucks}</h1>
   </p>
   <img class="icon" src="/assets/images/manure.png"> ${clickUpgrades.manure.quantity}
-  <img class="mose-img" src="/assets/images/mose.png"> ${autoUpgrades.mose.quantity}
+  <img class="mose-icon" src="/assets/images/mose.png"> ${autoUpgrades.mose.quantity}
   <img class="icon" src="/assets/images/waterCan.png"> ${clickUpgrades.water.quantity}
+  <img class="dwight-icon" src="/assets/images/dwight.png"> ${autoUpgrades.dwight.quantity}
 </div>
 
 <div class="col-md-4">
-  <b>Click Upgrades:</b>
-  <p><button class="btn" onclick="buyManure()">Apply Manure: $ ${clickUpgrades.manure.cost} Schrute
-      Bucks</button><span><img class"icon" scr="/assets/images/beet.png"> ${clickUpgrades.manure.multiplier}</span></p>
-  <button class="btn" onclick="waterBeets()">Water beets: $ ${clickUpgrades.water.cost} Schrute Bucks</button>${clickUpgrades.water.multiplier}
+<p><b>Click Upgrades:</b></p>
+<p><button class="btn" onclick="buyManure()">Apply Manure: $ ${clickUpgrades.manure.cost} Schrute
+    Bucks</button>
+
+    <span class="p-3"><img class="beet-icon" src="/assets/images/Beet.png"><b>x 
+    ${clickUpgrades.manure.multiplier}</b></span></p>
+
+<button class="btn myBtn" onclick="waterBeets()">Water beets: $ ${clickUpgrades.water.cost} Schrute
+  Bucks</button>
+  <span class="p-3"><img class="beet-icon myBtn" src="/assets/images/Beet.png"><b>x ${clickUpgrades.water.multiplier}
+  </b></span></p>
 </div>
 
+<div class="col-md-4">
+  <p><b>Increase your rate of harvest!</b></p>
+  <p><button class="btn myBtn" onclick="hireMose()">Hire Cousin Mose: $${autoUpgrades.mose.cost} Schrute Bucks</button>
 
-<div class="col-md-3">
-  <b>Increase your rate of harvest!</b>
-  <button class="btn" onclick="hireShrute()">Hire Cousin Mose: $${autoUpgrades.mose.cost} Schrute Bucks</button>
+  <span class="p-3"><img class="beet-icon myBtn" src="/assets/images/Beet.png"><b>x ${autoUpgrades.mose.multiplier}
+  </b></span></p>
+
+  <p><button class="btn myBtn" onclick="hireDwight()">Hire the Assistant to the Regional Manager: $${autoUpgrades.dwight.cost} Schrute Bucks</button>
+
+  <span class="p-3"><img class="beet-icon" src="/assets/images/Beet.png"><b>x ${autoUpgrades.dwight.multiplier}
+  </b></span></p>
+
 </div>
 
   `
@@ -106,13 +130,11 @@ function buyManure() {
   manure.purchased = true
   schruteBucks -= manure.cost
   manure.quantity++
-  manure.multiplier++
+  manure.multiplier += manure.quantity
   manure.cost += manure.multiplier
-
 
   drawStats()
 }
-
 
 function waterBeets() {
   let water = clickUpgrades.water
@@ -123,13 +145,13 @@ function waterBeets() {
   water.purchased = true
   schruteBucks -= water.cost
   water.quantity++
-  water.multiplier++
+  water.multiplier += water.quantity
   water.cost += water.quantity * water.multiplier
 
   drawStats()
 }
 
-function hireShrute() {
+function hireMose() {
   let mose = autoUpgrades.mose
   if (!mose) { return console.log('Does Not Exist') }
   if (schruteBucks < mose.cost) { return console.log('Not enough Shrute Bucks') }
@@ -137,7 +159,7 @@ function hireShrute() {
   mose.purchased = true
   schruteBucks -= mose.cost
   mose.quantity++
-  mose.multiplier * 2
+  mose.multiplier += mose.quantity
   mose.cost += mose.quantity * mose.multiplier
   drawStats()
   drawMose()
@@ -149,7 +171,7 @@ function drawMose() {
   
   <marquee behavior="alternate">
   <marquee behavior="alternate" direction="up">
-    <img class="mose-img" src="/assets/images/mose.png">
+    <img class="mose-icon" src="/assets/images/mose.png">
   </marquee>
 </marquee>
  
@@ -158,17 +180,42 @@ function drawMose() {
   setInterval(autoHarvest, 3000)
 }
 
+function hireDwight() {
+  let dwight = autoUpgrades.dwight
+  if (!dwight) { return console.log('Does Not Exist') }
+  if (schruteBucks < dwight.cost) { return console.log('Not enough Shrute Bucks') }
+
+  dwight.purchased = true
+  schruteBucks -= dwight.cost
+  dwight.quantity++
+  dwight.multiplier += dwight.quantity
+  dwight.cost += dwight.quantity * dwight.multiplier
+  drawStats()
+  drawDwight()
+}
+
+function drawDwight() {
+  let template = ''
+  template += `
+  
+  <marquee behavior="alternate">
+  <marquee behavior="alternate" direction="down">
+    <img class="dwight-icon" src="/assets/images/dwight.png">
+  </marquee>
+</marquee>
+ 
+  `
+  document.getElementById('dwightMarq').innerHTML = template
+  setInterval(autoHarvest, 3000)
+}
 
 // TODO itterate over clickUpgrades (for in)
 //        shruteBucks += upgrade.quantity * upgrade.multiplier
-
 //   setInterval(collectAutoUpgrades, 2000)
 
 function drawAll() {
   drawBeets()
   drawStats()
-
 }
-
 
 drawAll()

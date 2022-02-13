@@ -3,10 +3,6 @@ body {
 
 }
 
-.title-font {
-  font-family: 'Syne Tactile', cursive;
-}
-
 
 .header {
   background-color: #36413B;
@@ -16,40 +12,42 @@ body {
 
 
 .plot-col {
-  margin: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
 
 }
 
 .plot-img {
   max-height: 60vh;
+  border-color: rgb(70, 52, 36);
 }
 
 
 .footer-row {
   background-color: #36413B;
   color: #9CAA88;
-  padding: 2em;
+  padding: 3em;
+  min-height: 30vh;
 }
 
 
 .btn {
   max-width: 300px;
   display: inline-block;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
+  font-weight: bold;
   outline: #9CAA88;
   color: #9CAA88;
   background-color: #36413B;
   border: 2px solid #9CAA88;
   border-radius: 10px;
-  box-shadow: 0 9px #999;
+  box-shadow: 0 9px #c3d0d3;
 }
 
-.btn:hover {background-color: #36413B}
 
 .btn:active {
   background-color: #9CAA88;
-  box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
 
@@ -58,19 +56,21 @@ body {
   height: 50px;
 }
 
-.selectable:hover::after{
-  position: absolute;
-  top: 0;
-  left: 0;
-  content: '';
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 244, 244, 0.514);
-  opacity: 1;
+.beet-icon {
+  width: 60px;
+  height: 60px;
 }
 
-.mose-img {
+
+.mose-icon {
   max-width: 50px;
+    cursor: grab;
+    transition: all .5s ease;
+    user-select: none;
+}
+
+.dwight-icon {
+  max-width: 80px;
     cursor: grab;
     transition: all .5s ease;
     user-select: none;
@@ -80,4 +80,16 @@ marquee {
   min-height: 60vh;
   display: block;
   width: 100%;
+}
+
+.speech-bubble {
+  background-image: url('/assets/images/speech-bubble.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: 50%;
+}
+
+.dwight-cut-out {
+  max-width: 200px;
+  align-self: flex-end;
 }
