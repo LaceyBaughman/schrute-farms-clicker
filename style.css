@@ -1,19 +1,12 @@
+body {
+  background-color: #9CAA88;
 
+}
 
 .title-font {
   font-family: 'Syne Tactile', cursive;
 }
 
-.main {
-  background-color: #9CAA88;
-  min-height: 80vh;
-}
-
-.plot-col {
-  margin-left: 3em;
-  text-align: center;
-  
-}
 
 .header {
   background-color: #36413B;
@@ -22,25 +15,30 @@
 }
 
 
-footer {
+.plot-col {
+  margin: 1em;
+
+}
+
+.plot-img {
+  max-height: 60vh;
+}
+
+
+.footer-row {
   background-color: #36413B;
   color: #9CAA88;
-  min-height: 10vh;
+  padding: 2em;
 }
 
-.beet-plot {
-  max-width: 300px;
-}
 
 .btn {
+  max-width: 300px;
   display: inline-block;
-  padding: 15px 25px;
-  font-size: 24px;
-  cursor: pointer;
+  padding: 20px;
   text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
+  outline: #9CAA88;
+  color: #9CAA88;
   background-color: #36413B;
   border: 2px solid #9CAA88;
   border-radius: 10px;
@@ -50,20 +48,15 @@ footer {
 .btn:hover {background-color: #36413B}
 
 .btn:active {
-  background-color: #3e8e41;
+  background-color: #9CAA88;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
 
-.btn {
-  background-color: #36413B;
-  
-  border-radius: 5;
-  color: #9CAA88;
-  text-align: center;
-  font-size: 16px; ;
+.icon {
+  width: 70px;
+  height: 50px;
 }
-
 
 .selectable:hover::after{
   position: absolute;
@@ -76,3 +69,15 @@ footer {
   opacity: 1;
 }
 
+.mose-img {
+  max-width: 50px;
+    cursor: grab;
+    transition: all .5s ease;
+    user-select: none;
+}
+
+marquee {
+  min-height: 60vh;
+  display: block;
+  width: 100%;
+}
