@@ -1,48 +1,54 @@
 body {
-  background-color: #9CAA88;
+  background-color: #AC7D43;
 
 }
 
 
 .header {
-  background-color: #36413B;
-  color: #9CAA88;
+  background-color: #aa8096;
+  color: #ca9bb4;
   min-height: 10vh;
+}
+
+.schrute-farms {
+  max-height: 20vh;
 }
 
 
 .plot-col {
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-top: 3em;
+  margin-bottom: 5em;
 
 }
 
 .plot-img {
-  max-height: 60vh;
-  border-color: rgb(70, 52, 36);
+  border-radius: 5%;
+}
+
+.plot-row {
+  min-height: 60vh;
 }
 
 
 .footer-row {
-  background-color: #36413B;
-  color: #9CAA88;
-  padding: 3em;
+  background-color: #aa8096;
+  color: #36413B;
   min-height: 30vh;
 }
 
 
 .btn {
-  max-width: 300px;
+  min-width: 300px;
   display: inline-block;
-  padding: 10px;
+  padding: 5px;
   text-align: center;
   font-weight: bold;
-  outline: #9CAA88;
-  color: #9CAA88;
-  background-color: #36413B;
-  border: 2px solid #9CAA88;
+  outline: #36413B;
+  color: #ca9bb4;
+  background-color: #6b2f4b;
+  border: 2px solid #36413B;
   border-radius: 10px;
-  box-shadow: 0 9px #c3d0d3;
+  box-shadow: 0 9px #474b56;
 }
 
 

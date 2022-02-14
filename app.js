@@ -68,7 +68,7 @@ function autoHarvest() {
 function drawBeets() {
   let template = ''
   template += `
-  <img class="plot-img selectable" onclick="harvest()" src="/assets/images/beet-plot.png">
+  <img class="plot-img selectable" onclick="harvest()" src="/assets/images/beet-plot.jpeg">
   `
   document.getElementById('beetPlot').innerHTML = template
   console.log("drawBeets manure purchased", clickUpgrades.manure.purchased)
@@ -77,43 +77,31 @@ function drawBeets() {
 function drawStats() {
   let template = ''
   template += `
-
   <div class="col-md-4 p-2">
-  <p>
-  <h1>Schrute Bucks: ${schruteBucks}</h1>
-  </p>
+  <h2 class="m-2">Schrute Bucks: ${schruteBucks}</h2>
   <img class="icon" src="/assets/images/manure.png"> ${clickUpgrades.manure.quantity}
   <img class="mose-icon" src="/assets/images/mose.png"> ${autoUpgrades.mose.quantity}
   <img class="icon" src="/assets/images/waterCan.png"> ${clickUpgrades.water.quantity}
   <img class="dwight-icon" src="/assets/images/dwight.png"> ${autoUpgrades.dwight.quantity}
 </div>
-
-<div class="col-md-4">
+<div class="col-md-4 p-2">
 <p><b>Click Upgrades:</b></p>
-<p><button class="btn" onclick="buyManure()">Apply Manure: $ ${clickUpgrades.manure.cost} Schrute
-    Bucks</button>
-
-    <span class="p-3"><img class="beet-icon" src="/assets/images/Beet.png"><b>x 
-    ${clickUpgrades.manure.multiplier}</b></span></p>
-
-<button class="btn myBtn" onclick="waterBeets()">Water beets: $ ${clickUpgrades.water.cost} Schrute
+<button class="btn myBtn m-2" onclick="buyManure()">Apply Manure: $ ${clickUpgrades.manure.cost} Schrute Bucks</button>
+    <img class="beet-icon" src="/assets/images/Beet.png"><b>x 
+    ${clickUpgrades.manure.multiplier}</b>
+<button class="btn myBtn m-2" onclick="waterBeets()">Water beets: $ ${clickUpgrades.water.cost} Schrute
   Bucks</button>
-  <span class="p-3"><img class="beet-icon myBtn" src="/assets/images/Beet.png"><b>x ${clickUpgrades.water.multiplier}
-  </b></span></p>
+ <img class="beet-icon" src="/assets/images/Beet.png"><b>x ${clickUpgrades.water.multiplier}
+  </b>
 </div>
-
-<div class="col-md-4">
+<div class="col-md-4 p-2">
   <p><b>Increase your rate of harvest!</b></p>
-  <p><button class="btn myBtn" onclick="hireMose()">Hire Cousin Mose: $${autoUpgrades.mose.cost} Schrute Bucks</button>
-
-  <span class="p-3"><img class="beet-icon myBtn" src="/assets/images/Beet.png"><b>x ${autoUpgrades.mose.multiplier}
-  </b></span></p>
-
-  <p><button class="btn myBtn" onclick="hireDwight()">Hire the Assistant to the Regional Manager: $${autoUpgrades.dwight.cost} Schrute Bucks</button>
-
-  <span class="p-3"><img class="beet-icon" src="/assets/images/Beet.png"><b>x ${autoUpgrades.dwight.multiplier}
-  </b></span></p>
-
+  <button class="btn myBtn m-2" onclick="hireMose()">Hire Cousin Mose: $${autoUpgrades.mose.cost} Schrute Bucks</button>
+  <img class="beet-icon myBtn" src="/assets/images/Beet.png"><b>x ${autoUpgrades.mose.multiplier}
+  </b>
+  <button class="btn myBtn m-2" onclick="hireDwight()">Hire the Assistant to the Regional<p>Manager: $${autoUpgrades.dwight.cost} Schrute Bucks</p></button>
+  <img class="beet-icon" src="/assets/images/Beet.png"><b>x ${autoUpgrades.dwight.multiplier}
+  </b>
 </div>
 
   `
